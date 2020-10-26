@@ -232,144 +232,53 @@
             praesentium, voluptas
             animi eos. Doloribus neque iste earum?</p>
         <div id="testimonial-slider" class="owl-carousel owl-theme">
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
+
+            <?php 
+                $testimonialPost = new WP_Query(array(
+                    'post_type' => 'testimonials',
+                    'posts_per_page' => -1,
+                ));
+                while($testimonialPost->have_posts())
+                {
+                    $testimonialPost->the_post();
+            ?>
+                <div class="card card-border testi-card shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="quote-wrapper">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <?php 
+                                    if(has_post_thumbnail())
+                                    {
+                                        $featureImage = get_the_post_thumbnail_url();
+                                        $imageID = get_post_thumbnail_id();
+                                        $altImage = get_post_meta( $imageID, '_wp_attachment_image_alt', true );
+                                ?>
+                                    <div class="testi-img">
+                                        <img src="<?php echo $featureImage;?>" alt="<?php echo $altImage; ?>">
+                                    </div>
+                                <?php  
+                                    }
+                                ?>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/John.jpg" alt="">
-                            </div>
-                        </div>
+                        <h4><?php echo get_the_title(); ?></h4>
+                        <div class="testi-underline mb-3"></div>
+                        <p>
+                            <?php
+                                echo get_the_content();
+                            ?>
+                        </p>
                     </div>
-                    <h4>John Abraham</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
                 </div>
-            </div>
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Brock.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>Brock Lesnar</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
-                </div>
-            </div>
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/John.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>John Abraham</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
-                </div>
-            </div>
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Brock.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>Brock Lesnar</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
-                </div>
-            </div>
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/John.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>John Abraham</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
-                </div>
-            </div>
-            <div class="card card-border testi-card shadow">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="quote-wrapper">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Quotes.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="testi-img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Brock.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <h4>Brock Lesnar</h4>
-                    <div class="testi-underline mb-3"></div>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quas voluptates recusandae,
-                        autem
-                        quidem in blanditiis ipsam temporibus vero! Repudiandae.
-                    </p>
-                </div>
-            </div>
+            <?php   
+                }
+                wp_reset_postdata();
+            ?>
         </div>
     </div>
 </section>
