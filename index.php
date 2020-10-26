@@ -285,7 +285,7 @@
 <!-- end of testimonials -->
 
 <!-- query form -->
-<section class="q-form">
+<section id="q-form" class="q-form">
     <div class="container">
         <div class="card border-0 card-form shadow">
             <div class="card-body">

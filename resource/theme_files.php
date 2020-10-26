@@ -55,6 +55,56 @@
                 'editor',
             ),
         ) );
+
+        // Gallery
+        register_post_type( 'gallery', array(
+            'public' => true,
+            'label' => 'Gallery',
+            'show_ui' => true,
+            'show_in_nav_menus' => true,
+            'descriptions' => 'Our Gallery',
+            'menu_icon' => 'dashicons-format-gallery',
+            'supports' => array(
+                'title',
+                'thumbnail',
+                'editor',
+            ),
+            'labels' => array(
+                'edit_item' => 'Edit Picture',
+                'add_new' => 'Add Picture',
+                'add_new_item' => 'Add New Picture',
+                'new_item' => 'New Picture',
+                'view_item' => 'View Picture',
+                'all_items' => 'All Pictures',
+                'singular_name' => 'Picture',
+                'menu_name' => 'Our Gallery',
+            ),
+        ) );
+
+        // Team
+        register_post_type( 'our-team', array(
+            'public' => true,
+            'label' => 'Our Team',
+            'show_ui' => true,
+            'show_in_nav_menus' => true,
+            'descriptions' => 'Our Team',
+            'menu_icon' => 'dashicons-groups',
+            'supports' => array(
+                'title',
+                'thumbnail',
+                'editor',
+            ),
+            'labels' => array(
+                'edit_item' => 'Edit Team Member',
+                'add_new' => 'Add Team Member',
+                'add_new_item' => 'Add New Team Member',
+                'new_item' => 'New Team Member',
+                'view_item' => 'View Team Member',
+                'all_items' => 'All Team Members',
+                'singular_name' => 'Team Member',
+                'menu_name' => 'Our Team',
+            ),
+        ) );
     }
     add_action( 'init', 'cpt' );    
 

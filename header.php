@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
-    <title><?php bloginfo('title'); ?></title>
+    <title><?php bloginfo('title'); ?> | <?php echo get_the_title(); ?></title>
 
     <?php wp_head(); ?>
 </head>
@@ -21,8 +21,8 @@
 <header class="bg-white">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="">
+            <a class="navbar-brand" href="<?php echo site_url(); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="Logo of Al-Mustafa">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,35 +30,53 @@
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <?php 
+                    // $args = array(
+                    //     'theme_location' => 'primary',
+                    //     'container' => false,
+                    //     'menu_class' => 'navbar-nav nav-dates',
+                    //     'add_li_class'  => 'nav-item'
+                    // );
+                    // wp_nav_menu($args);
+                ?>
                 <ul class="navbar-nav nav-dates">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item <?php if(is_front_page()){ echo 'active'; } ?>">
+                        <a class="nav-link" href="<?php echo site_url(); ?>">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
+                    <li class="nav-item <?php if( is_page('about-us') ){ echo 'active'; } ?>">
+                        <a class="nav-link" href="<?php echo site_url('/about-us'); ?>">About Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="product.html" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dates
                         </a>
+                        <?php 
+                            $args = array(
+                                'post_type' => 'dateproduct',
+                                'posts_per_page' => -1,
+                                'order' => 'ASC',
+                            );
+                            $menuItem = new WP_Query($args);
+                        ?>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="product.html">Dates Type 1</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 2</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 3</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 4</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 5</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 6</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 7</a>
-                            <a class="dropdown-item" href="product.html">Dates Type 8</a>
+                            <?php 
+                                while($menuItem->have_posts())
+                                {
+                                    $menuItem->the_post();
+                                    ?>
+                                        <a class="dropdown-item" href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a>
+                                    <?php
+                                }
+                                wp_reset_postdata();
+                            ?>
                         </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="gallery.html">Our Gallery</a>
+                    <li class="nav-item <?php if( is_page('our-gallery') ){ echo 'active'; } ?>">
+                        <a class="nav-link" href="<?php echo site_url('/our-gallery'); ?>">Our Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <button class="btn btn-dates">contact us</button> -->
-                        <a href="#q-form" class="btn btn-dates">contact us</a>
+                        <a href="<?php echo home_url(); ?>#q-form" class="btn btn-dates">contact us</a>
                     </li>
                 </ul>
             </div>
