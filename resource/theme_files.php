@@ -61,7 +61,11 @@
 
     function rnm()
     {
-        register_nav_menu( 'primary', 'Primary Menu' );
+        $args = array(
+            'primary' => 'Primary Menu',
+            'secondary' => 'Secondary Menu',
+        );
+        register_nav_menus($args);
     }
     add_action( 'after_setup_theme', 'rnm' );
 ?>

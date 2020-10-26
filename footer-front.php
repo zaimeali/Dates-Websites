@@ -12,7 +12,14 @@
             <div class="col-12 col-md-6 col-lg-2 mb-4">
                 <h6>Our Links</h6>
                 <div class="underline-left mb-3 mobo-auto"></div>
-                <div class="footer-menu">
+                <?php 
+                    $args = array(
+                        'theme_location' => 'secondary',
+                        'container_class' => 'footer-menu',
+                    );
+                    wp_nav_menu($args); 
+                ?>
+                <!-- <div class="footer-menu">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About us</a></li>
@@ -20,7 +27,7 @@
                         <li><a href="gallery.html">Our Gallery</a></li>
                         <li><a href="#!">Contact us</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-12 col-md-6 col-lg-3 mb-4">
                 <h6>Contact With Us</h6>
