@@ -99,79 +99,52 @@
                             <div class="underline-center mb-3"></div>
                         </div>
                     </div>
-                    <div class="row mb-5">
-                        <div class="col-lg-4">
-                            <div class="card border-0 team-shadow">
-                                <div class="card-body">
-                                    <div class="team-img">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/about/roman.png" alt="">
+                <div class="row mb-5">
+                    <?php 
+                        $args = array(
+                            'post_type' => 'our-team',
+                            'posts_per_page' => -1,
+                        );
+                        $teamQuery = new WP_Query($args);
+
+                        while($teamQuery->have_posts())
+                        {
+                            $teamQuery->the_post();
+                            ?>
+                                <div class="col-lg-4">
+                                    <div class="card border-0 team-shadow">
+                                        <div class="card-body">
+                                            <div class="team-img">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/img/about/roman.png" alt="">
+                                            </div>
+                                            <h4><?php echo get_the_title(); ?></h4>
+                                            <p class="tx-16 dark-color mb-3"><?php echo get_field('designation'); ?></p>
+                                            <div class="testi-underline mb-3"></div>
+                                            <p class="mb-3"><?php echo get_the_content(); ?></p>
+                                            <ul class="icon-list">
+                                                <li>
+                                                    <a target="_blank" href="<?php echo get_field('facebook_link'); ?>">
+                                                        <div><i class="fab fa-facebook-f"></i></div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="<?php echo get_field('twitter_link'); ?>">
+                                                        <div><i class="fab fa-twitter"></i></div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="<?php echo get_field('linkedin_link'); ?>">
+                                                        <div><i class="fab fa-linkedin-in"></i></div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <h4>Roman Empire</h4>
-                                    <p class="tx-16 dark-color mb-3">Graphics Designer</p>
-                                    <div class="testi-underline mb-3"></div>
-                                    <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quis!</p>
-                                    <ul class="icon-list">
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-facebook-f"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-twitter"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-linkedin-in"></i></div>
-                                            </a></li>
-                                    </ul>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card border-0 team-shadow">
-                                <div class="card-body">
-                                    <div class="team-img">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/about/susan.png" alt="">
-                                    </div>
-                                    <h4>Susan Reo Dean</h4>
-                                    <p class="tx-16 dark-color mb-3">Graphics Designer</p>
-                                    <div class="testi-underline mb-3"></div>
-                                    <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quis!</p>
-                                    <ul class="icon-list">
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-facebook-f"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-twitter"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-linkedin-in"></i></div>
-                                            </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card border-0 team-shadow">
-                                <div class="card-body">
-                                    <div class="team-img">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/about/john.png" alt="">
-                                    </div>
-                                    <h4>John Rao Jhalo</h4>
-                                    <p class="tx-16 dark-color mb-3">Graphics Designer</p>
-                                    <div class="testi-underline mb-3"></div>
-                                    <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quis!</p>
-                                    <ul class="icon-list">
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-facebook-f"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-twitter"></i></div>
-                                            </a></li>
-                                        <li><a href="#!">
-                                                <div><i class="fab fa-linkedin-in"></i></div>
-                                            </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            <?php 
+                        }
+                        wp_reset_postdata();
+                    ?>
                     </div>
                 </div>
             </section>
