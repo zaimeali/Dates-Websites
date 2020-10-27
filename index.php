@@ -55,6 +55,7 @@
                 $args = array(
                     'post_type' => 'dateproduct',
                     'order'     => 'ASC',
+                    
                 );
                 $dateQuery = new WP_Query($args);
 
