@@ -105,6 +105,30 @@
                 'menu_name' => 'Our Team',
             ),
         ) );
+
+        // Mission
+        register_post_type( 'our-mission', array(
+            'public' => true,
+            'label' => 'Our Mission',
+            'show_ui' => true,
+            'show_in_nav_menus' => true,
+            'descriptions' => 'Our Mission',
+            'menu_icon' => 'dashicons-universal-access-alt',
+            'supports' => array(
+                'title',
+                'editor',
+            ),
+            'labels' => array(
+                'edit_item' => 'Edit Mission',
+                'add_new' => 'Add Mission',
+                'add_new_item' => 'Add New Mission',
+                'new_item' => 'New Mission',
+                'view_item' => 'View Mission',
+                'all_items' => 'All Missions',
+                'singular_name' => 'Mission',
+                'menu_name' => 'Our Mission',
+            ),
+        ) );
     }
     add_action( 'init', 'cpt' );    
 

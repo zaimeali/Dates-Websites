@@ -55,37 +55,48 @@
                                 quasi vero?</p>
                         </div>
                     </div>
-                    <div class="row item-center">
-                        <div class="col-md-12 col-lg-6 mb-4">
-                            <div class="collapse-one">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/About.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6">
-                            <div class="right-col-img">
-                                <h2>Our Mission</h2>
-                                <div class="underline-left mb-4"></div>
-                                <p class="tx-16 mb-1"><img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> Lorem ipsum
-                                    consectetur
-                                    adipisicing elit. Ratione.</p>
-                                <p class="tx-16 mb-1"><img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> Lorem ipsum
-                                    consectetur
-                                    adipisicing elit. Ratione.</p>
-                                <p class="tx-16 mb-1"><img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> Lorem ipsum
-                                    consectetur
-                                    adipisicing elit. Ratione.</p>
-                                <p class="tx-16 mb-1"><img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> Lorem ipsum
-                                    consectetur
-                                    adipisicing elit. Ratione.</p>
-                                <p class="tx-16 mb-4"><img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> Lorem ipsum
-                                    consectetur
-                                    adipisicing elit. Ratione.</p>
-                                <div>
-                                    <button class="btn btn-dates-outline">read more</button>
+
+                    <?php 
+                        $args = array(
+                            'post_type' => 'our-mission',
+                        );
+
+                        $missionQuery = new WP_Query($args);
+
+                        if($missionQuery->have_posts())
+                        {
+                            ?>
+                            <div class="row item-center">
+                                <div class="col-md-12 col-lg-6 mb-4">
+                                    <div class="collapse-one">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/About.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="right-col-img">
+                                        <h2>Our Mission</h2>
+                                        <div class="underline-left mb-4"></div>
+                                        <?php 
+                                            while($missionQuery->have_posts())
+                                            {
+                                                $missionQuery->the_post();
+                                                ?>
+                                                <p class="tx-16 mb-1">
+                                                    <img src="<?php echo get_template_directory_uri(); ?>/img/about/1.png" class="dots" alt=""> 
+                                                    <?php echo get_the_content(); ?>
+                                                </p>
+                                                <?php 
+                                            }
+                                        ?>
+                                        <!-- <div style="display: none;">
+                                            <button class="btn btn-dates-outline">read more</button>
+                                        </div> -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            <?php 
+                        }
+                    ?>
                 </div>
             </section>
             <!-- end of about us -->
