@@ -20,7 +20,7 @@
                         aut ullam ea non dolorem, ducimus eligendi sequi odio vitae voluptas, reprehenderit distinctio
                         minus corporis nam?</p>
                     <div>
-                        <button class="btn btn-dates-outline">read more</button>
+                        <a href="<?php echo site_url( '/about-us' ); ?>" class="btn btn-dates-outline">read more</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="underline-left mb-3"></div>
 
             </div>
-            <div class="col-4 col-lg-2">
+            <div class="col-4 col-lg-2" style="display: none;">
                 <button class="btn btn-dates-outline float-right">view all</button>
             </div>
 
@@ -51,126 +51,41 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-1.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 1</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
+            <?php 
+                $args = array(
+                    'post_type' => 'dateproduct',
+                    'order'     => 'ASC',
+                );
+                $dateQuery = new WP_Query($args);
+
+                while($dateQuery->have_posts())
+                {
+                    $dateQuery->the_post();
+                    ?>
+                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                        <div class="item">
+                            <a href="product.html">
+                                <div class="card card-border h-302">
+                                    <div class="card-body">
+                                        <?php 
+                                            $featureImage = get_the_post_thumbnail_url();
+                                            $imageID = get_post_thumbnail_id();
+                                            $altImage = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+                                        ?>
+                                        <img src="<?php echo $featureImage; ?>" alt="<?php if($altImage) { echo $altImage; } else { echo get_the_title(); } ?>">
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <h5><?php echo get_the_title(); ?></h5>
+                                        <p><?php echo get_the_excerpt(); ?></p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-2.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 2</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-3.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 3</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-4.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 4</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-5.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 5</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-6.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 6</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-7.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 7</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                <div class="item">
-                    <a href="product.html">
-                        <div class="card card-border h-302">
-                            <div class="card-body">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-8.jpg" alt="">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h5>Dates Type 8</h5>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
+                    <?php 
+                }
+                wp_reset_postdata();
+            ?>
         </div>
     </div>
 </section>

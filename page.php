@@ -192,22 +192,58 @@
                                 'posts_per_page' => 10,
                             );
                             $dateQuery = new WP_Query($args);
-                        ?>
-                        <div class="col-12 col-md-4 col-lg-3 mb-4">
-                            <div class="item">
-                                <a href="product.html">
-                                    <div class="card card-border h-302">
-                                        <div class="card-body">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/img/Type-1.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer text-center">
-                                            <h5>Dates Type 1</h5>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p>
-                                        </div>
+
+                            if($dateQuery->have_posts())
+                            {
+                                while($dateQuery->have_posts())
+                                {
+                                    $dateQuery->the_post();
+                                ?>
+                                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                    <div class="item">
+                                        <a href="#">
+                                            <div class="card card-border h-210">
+                                                <div class="card-body">
+                                                    <?php 
+                                                        if(has_post_thumbnail())
+                                                        {
+                                                            $featureImage = get_the_post_thumbnail_url();
+                                                            $imageID = get_post_thumbnail_id();
+                                                            $altImage = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+                                                            ?>
+                                                                <img src="<?php echo $featureImage; ?>" alt="<?php if($altImage) { echo $altImage; } else { echo get_the_title(); } ?>">
+                                                            <?php
+                                                        }
+                                                        else
+                                                        {
+                                                            ?>
+                                                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-1.jpg" alt="Test Image">
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <h5><?php echo get_the_title(); ?></h5>
+                                                    <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p> -->
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
+                                </div>
+                                <?php
+                                }
+                            }
+                            else
+                            {
+                                ?>
+                                <div class="col-12 mb-4">
+                                    <div class="item" style="display: flex; justify-content: center; align-items: center;">
+                                        <h3 class="text-muted">No Post in Gallery</h3>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        ?>
 
                     </div>
                 </div>

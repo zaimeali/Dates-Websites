@@ -67,7 +67,6 @@
             'supports' => array(
                 'title',
                 'thumbnail',
-                'editor',
             ),
             'labels' => array(
                 'edit_item' => 'Edit Picture',
