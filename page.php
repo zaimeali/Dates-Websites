@@ -195,43 +195,27 @@
 
                             if($dateQuery->have_posts())
                             {
+                                ?>
+                                <div class="card-columns">
+                                <?php
                                 while($dateQuery->have_posts())
                                 {
                                     $dateQuery->the_post();
-                                ?>
-                                <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                    <div class="item">
-                                        <a href="#">
-                                            <div class="card card-border h-210">
-                                                <div class="card-body">
-                                                    <?php 
-                                                        if(has_post_thumbnail())
-                                                        {
-                                                            $featureImage = get_the_post_thumbnail_url();
-                                                            $imageID = get_post_thumbnail_id();
-                                                            $altImage = get_post_meta($imageID, '_wp_attachment_image_alt', true);
-                                                            ?>
-                                                                <img src="<?php echo $featureImage; ?>" alt="<?php if($altImage) { echo $altImage; } else { echo get_the_title(); } ?>">
-                                                            <?php
-                                                        }
-                                                        else
-                                                        {
-                                                            ?>
-                                                                <img src="<?php echo get_template_directory_uri(); ?>/img/Type-1.jpg" alt="Test Image">
-                                                            <?php
-                                                        }
-                                                    ?>
-                                                </div>
-                                                <div class="card-footer text-center">
-                                                    <h5><?php echo get_the_title(); ?></h5>
-                                                    <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing...</p> -->
-                                                </div>
-                                            </div>
-                                        </a>
+                                    if(has_post_thumbnail())
+                                    {
+                                        $featureImage = get_the_post_thumbnail_url();
+                                        $imageID = get_post_thumbnail_id();
+                                        $altImage = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+                                    }
+                                    ?>
+                                    <div class="card">
+                                        <img class="card-img-top" src="<?php echo $featureImage; ?>" alt="<?php echo get_the_title(); ?>">
                                     </div>
+                                    <?php
+                                }
+                            ?>
                                 </div>
                                 <?php
-                                }
                             }
                             else
                             {
