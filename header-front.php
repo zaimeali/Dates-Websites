@@ -82,47 +82,39 @@
         </nav>
     </div>
     <div class="container">
-        <div id="banner-slider" class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="banner bg-1">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <h1 class="main-heading">welcome to al-mustafa dates</h1>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                incidunt fugiat
-                                tempora quaerat repellat ea ad rerum sed nemo nisi?</p>
-                            <button class="btn btn-dates">get a quote</button>
-                        </div>
-                    </div>
+        <?php 
+            $args = array(
+                'post_type' => 'slider'
+            );
+            $sliderImage = new WP_Query($args);
+            if($sliderImage->have_posts())
+            {
+                ?>
+                <div id="banner-slider" class="owl-carousel owl-theme">
+                    <?php
+                        while($sliderImage->have_posts())
+                        {
+                            $sliderImage->the_post();
+                            ?>
+                                <div class="item">
+                                    <div class="banner" style="background: url(<?php echo get_the_post_thumbnail_url(); ?>);">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <h1 class="main-heading"><?php echo get_the_title(); ?></h1>
+                                                <p class="mb-4"><?php echo get_the_content(); ?></p>
+                                                <a href="#q-form" class="btn btn-dates">get a quote</a href="#q-form">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                        }
+                    ?>
                 </div>
-            </div>
-            <div class="item">
-                <div class="banner bg-2">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <h1 class="main-heading">welcome to al-mustafa dates</h1>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                incidunt fugiat
-                                tempora quaerat repellat ea ad rerum sed nemo nisi?</p>
-                            <button class="btn btn-dates">get a quote</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="banner bg-3">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <h1 class="main-heading">welcome to al-mustafa dates</h1>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
-                                incidunt fugiat
-                                tempora quaerat repellat ea ad rerum sed nemo nisi?</p>
-                            <button class="btn btn-dates">get a quote</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php
+            }
+            wp_reset_postdata();
+        ?>
     </div>
 </header>
 <!-- end of header -->

@@ -33,7 +33,10 @@
                     </div>
                     <div class="row mb-5">
                         <div class="col-md-12">
-                            <p class="tx-16 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quidem est quaerat
+                            <!-- <p class="tx-16">     -->
+                                <?php echo get_the_content(); ?>
+                            <!-- </p> -->
+                            <!-- <p class="tx-16 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quidem est quaerat
                                 nesciunt
                                 sint libero
                                 reiciendis, repellendus commodi nemo placeat voluptatem consequatur perspiciatis aspernatur. Veniam,
@@ -46,13 +49,13 @@
                                 veniam exercitationem, eos deserunt nam laudantium reiciendis unde consequatur provident officia id
                                 ratione esse repudiandae iure quibusdam perspiciatis nobis quo beatae dolorum architecto? Officiis
                                 non
-                                officia laboriosam nobis eveniet, optio obcaecati vitae?</p>
-                            <p class="tx-16 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi magni
+                                officia laboriosam nobis eveniet, optio obcaecati vitae?</p>  -->
+                            <!-- <p class="tx-16 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi magni
                                 quam
                                 tempore
                                 cupiditate
                                 est voluptate sit, amet atque minima excepturi harum sunt corporis officia ipsam eligendi, incidunt
-                                quasi vero?</p>
+                                quasi vero?</p> -->
                         </div>
                     </div>
 

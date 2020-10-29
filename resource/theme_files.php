@@ -5,6 +5,31 @@
     // Register Custom Post Type
     function cpt()
     {
+        // Slider
+        register_post_type( 'slider', array(
+            'public' => true,
+            'label' => 'Slider',
+            'show_ui' => true,
+            'show_in_nav_menus' => true,
+            'descriptions' => 'Carousel Slider',
+            'menu_icon' => 'dashicons-cover-image',
+            'labels' => array(
+                'edit_item' => 'Edit Image',
+                'add_new' => 'Add Image',
+                'add_new_item' => 'Add New Image',
+                'new_item' => 'New Image',
+                'view_item' => 'View Image',
+                'all_items' => 'All Images',
+                'singular_name' => 'Image',
+                'menu_name' => 'Slider',
+            ),
+            'supports' => array(
+                'title',
+                'thumbnail',
+                'editor',
+            ),
+        ) );
+
         // Dates Products
         register_post_type( 'dateproduct', array(
             'public' => true,

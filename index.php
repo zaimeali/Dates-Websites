@@ -38,9 +38,9 @@
                 <div class="underline-left mb-3"></div>
 
             </div>
-            <div class="col-4 col-lg-2" style="display: none;">
+            <!-- <div class="col-4 col-lg-2" style="display: none;">
                 <button class="btn btn-dates-outline float-right">view all</button>
-            </div>
+            </div> -->
 
         </div>
         <div class="row mb-4">
@@ -55,7 +55,7 @@
                 $args = array(
                     'post_type' => 'dateproduct',
                     'order'     => 'ASC',
-                    
+
                 );
                 $dateQuery = new WP_Query($args);
 
@@ -105,7 +105,7 @@
                         aut ullam ea non dolorem, ducimus eligendi sequi odio vitae voluptas, reprehenderit distinctio
                         minus corporis nam?</p>
                     <div>
-                        <button class="btn btn-dates-outline">get a quote</button>
+                        <a href="#q-form" class="btn btn-dates-outline">get a quote</a>
                     </div>
                 </div>
 
@@ -253,21 +253,27 @@
                                 <label for="">Enter type of Dates*</label>
                                 <select name="" id="" class="form-control">
                                     <option selected>Select Dates Type</option>
-                                    <option value="1">Dates Type 1</option>
-                                    <option value="2">Dates Type 2</option>
-                                    <option value="3">Dates Type 3</option>
+                                    <?php 
+                                        $args = array(
+                                            'post_type' => 'dateproduct',
+                                            'order' => 'ASC'
+                                        );
+                                        $datesOption = new WP_Query($args);
+                                        while($datesOption->have_posts())
+                                        {
+                                            $datesOption->the_post();
+                                            ?>
+                                            <option value="<?php echo get_the_ID(); ?>"><?php echo get_the_title(); ?></option>
+                                            <?php
+                                        }
+                                        ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">Enter Quatity*</label>
-                                <select name="" id="" class="form-control">
-                                    <option selected>Quantity</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <input min=0 type="number" class="form-control" placeholder="Quantity">
                             </div>
                         </div>
                     </div>
