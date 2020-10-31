@@ -202,7 +202,7 @@
     <div class="container">
         <div class="card border-0 card-form shadow">
             <div class="card-body">
-                <?php echo do_shortcode( '[hf_form slug="contact-form"]' ); ?>
+                <?php echo do_shortcode( '[contact-form-7 id="161" title="Main Contact Form"]' ); ?>
                 <!-- <form> -->
                     <!-- <div class="row text-center">
                         <div class="col-md-12">

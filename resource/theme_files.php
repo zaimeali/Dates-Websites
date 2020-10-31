@@ -36,6 +36,7 @@
             'label' => 'Date Product',
             'show_ui' => true,
             'show_in_nav_menus' => true,
+            'show_in_rest' => true,
             'descriptions' => 'For Selling Date',
             'menu_icon' => 'dashicons-products',
             'labels' => array(
