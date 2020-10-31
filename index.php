@@ -106,7 +106,6 @@
                         <a href="#q-form" class="btn btn-dates-outline">get a quote</a>
                     </div>
                 </div>
-
             </div>
             <div class="col-md-12 col-lg-6">
                 <div class="collapse-two">
