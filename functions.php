@@ -1,6 +1,7 @@
 <?php
 
     require_once __DIR__.'/resource/theme_files.php';
+    require_once __DIR__.'/resource/customizer.php';
 
 
         // Navigation Menu

@@ -15,10 +15,9 @@
                 <div class="right-col-img">
                     <h2>About Us</h2>
                     <div class="underline-left mb-4"></div>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos libero ut quis
-                        deleniti qui
-                        aut ullam ea non dolorem, ducimus eligendi sequi odio vitae voluptas, reprehenderit distinctio
-                        minus corporis nam?</p>
+                    <p class="mb-4">
+                        <?php echo get_theme_mod('description_about'); ?>
+                    </p>
                     <div>
                         <a href="<?php echo site_url( '/about-us' ); ?>" class="btn btn-dates-outline">read more</a>
                     </div>
@@ -100,10 +99,9 @@
                 <div class="left-col-img">
                     <h2>What we do</h2>
                     <div class="underline-left mb-4"></div>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos libero ut quis
-                        deleniti qui
-                        aut ullam ea non dolorem, ducimus eligendi sequi odio vitae voluptas, reprehenderit distinctio
-                        minus corporis nam?</p>
+                    <p class="mb-4">
+                        <?php echo get_theme_mod('description_what_we_do'); ?>
+                    </p>
                     <div>
                         <a href="#q-form" class="btn btn-dates-outline">get a quote</a>
                     </div>
@@ -205,8 +203,9 @@
     <div class="container">
         <div class="card border-0 card-form shadow">
             <div class="card-body">
-                <form>
-                    <div class="row text-center">
+                <?php echo do_shortcode( '[hf_form slug="contact-form"]' ); ?>
+                <!-- <form> -->
+                    <!-- <div class="row text-center">
                         <div class="col-md-12">
                             <h2>Query Form</h2>
                             <div class="underline-center mb-3"></div>
@@ -254,18 +253,18 @@
                                 <select name="" id="" class="form-control">
                                     <option selected>Select Dates Type</option>
                                     <?php 
-                                        $args = array(
-                                            'post_type' => 'dateproduct',
-                                            'order' => 'ASC'
-                                        );
-                                        $datesOption = new WP_Query($args);
-                                        while($datesOption->have_posts())
-                                        {
-                                            $datesOption->the_post();
-                                            ?>
-                                            <option value="<?php echo get_the_ID(); ?>"><?php echo get_the_title(); ?></option>
-                                            <?php
-                                        }
+                                        // $args = array(
+                                        //     'post_type' => 'dateproduct',
+                                        //     'order' => 'ASC'
+                                        // );
+                                        // $datesOption = new WP_Query($args);
+                                        // while($datesOption->have_posts())
+                                        // {
+                                        //     $datesOption->the_post();
+                                        //     ?>
+                                        //     <option value="<?php //echo get_the_ID(); ?>"><?php //echo get_the_title(); ?></option>
+                                        //     <?php
+                                        // }
                                         ?>
                                 </select>
                             </div>
@@ -281,8 +280,8 @@
                         <div class="col-md-12">
                             <button class="btn btn-dates form-btn">submit now</button>
                         </div>
-                    </div>
-                </form>
+                    </div> -->
+                <!-- </form> -->
             </div>
         </div>
     </div>

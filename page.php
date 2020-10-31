@@ -13,9 +13,9 @@
                         <div class="col-md-12">
                             <h1 class="product-h1">About us</h1>
                             <div class="underline-center mb-3"></div>
-                            <p class="tx-16">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis reiciendis neque
-                                veniam in,
-                                dolores obcaecati dolorem modi. Cumque, consequatur alias?</p>
+                            <p class="tx-16">
+                                <?php echo get_theme_mod('description_about_page'); ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -175,9 +175,9 @@
                         <div class="col-md-12">
                             <h1 class="product-h1">our gallery</h1>
                             <div class="underline-center mb-3"></div>
-                            <p class="tx-16">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis reiciendis neque
-                                veniam in,
-                                dolores obcaecati dolorem modi. Cumque, consequatur alias?</p>
+                            <p class="tx-16">
+                                <?php echo get_theme_mod('description_gallery_page'); ?>
+                            </p>
                         </div>
                     </div>
                 </div>
