@@ -91,7 +91,7 @@
         <hr>
         <div class="row text-center">
             <div class="col-md-12">
-                <p>Copyright 2020 - All Rights Reserved</p>
+                <p>Copyright 2022 - All Rights Reserved</p>
             </div>
         </div>
     </div>
